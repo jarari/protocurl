@@ -114,6 +114,9 @@ func intialiseFlags() {
 	flags.BoolVarP(&CurrentConfig.ShowOutputOnly, "show-output-only", "q", false,
 		"Suppresses all output except response Protobuf as text. "+
 			"Overrides and deactivates -v and -D. Errors are still printed to stderr.")
+
+	flags.BoolVarP(&CurrentConfig.DisableDefaultHeader, "disable-default-header", "n", false,
+		"Disables the default Content-Type header.")
 }
 
 func propagateFlags() {

@@ -33,6 +33,7 @@ type Config struct {
 	GlobalProtoc         bool
 	CustomProtocPath     string
 	InferProtoFiles      bool
+	DisableDefaultHeader bool
 }
 
 var commit string
@@ -76,8 +77,10 @@ var rootCmd = &cobra.Command{
 		propagateFlags()
 
 		printVersionInfoVerbose(cmd)
-
-		addDefaultHeaderArgument()
+		
+		if !CurrentConfig.DisableDefaultHeader {
+			addDefaultHeaderArgument()
+		}
 
 		printArgsVerbose()
 
